@@ -2,32 +2,26 @@
 allowedinp = ['kamień', 'papier', 'nożyce', 'zakończ']
 
 def gra(x,y):
-    countGracz1 = 0
-    countGracz2 = 0
     if inpGracz1 == inpGracz2:
-        print('Remis')
+        wyn = 'Remis'
     elif inpGracz1 == 'kamień' and inpGracz2 == 'nożyce':
-        print('Gracz 1 wygrywa')
-        countGracz1 += 1
+        wyn = 'Gracz1'
     elif inpGracz1 == 'nożyce' and inpGracz2 == 'kamień':
-        print('Gracz 2 wygrywa')
-        countGracz2 += 1
+        wyn = 'Gracz2'
     elif inpGracz1 == 'papier' and inpGracz2 == 'nożyce':
-        print('Gracz 2 wygrywa')
-        countGracz2 += 1
+        wyn = 'Gracz2'
     elif inpGracz1 == 'nożyce' and inpGracz2 == 'papier':
-        print('Gracz 1 wygrywa')
-        countGracz1 += 1
+        wyn = 'Gracz1'
     elif inpGracz1 == 'kamień' and inpGracz2 == 'papier':
-        print('Gracz 2 wygrywa')
-        countGracz2 += 1
+        wyn = 'Gracz2'
     elif inpGracz1 == 'papier' and inpGracz2 == 'kamień':
-        print('Gracz 1 wygrywa')
-        countGracz1 += 1
+        wyn = 'Gracz1'
     else:
         print("Błąd. Spróbuj jeszcze raz")
-    return countGracz1, countGracz2
+    return wyn
 
+countGracz1 = 0
+countGracz2 = 0
 while True:
     while True:
         inpGracz1 = input("Gracz 1 - Wpisz kamień, papier lub nożyce.  Wpisz zakończ aby zakończyć: ")
@@ -49,9 +43,17 @@ while True:
             print('Ok papa!')
             exit()
         else: break
-    gra(inpGracz1,inpGracz2)
+    # gra(inpGracz1,inpGracz2) zwraca wartość zmiennej wyn
+    if gra(inpGracz1,inpGracz2) == 'Remis':
+        print('Remis')
+    elif gra(inpGracz1,inpGracz2) == 'Gracz1':
+        print('Gracz 1 wygrywa')
+        countGracz1 += 1
+    elif gra(inpGracz1,inpGracz2) == 'Gracz2':
+        print('Gracz 2 wygrywa')
+        countGracz2 +=1
     cont = input ('Chcesz grać dalej? t/n: ')
     if cont == 't': continue
-    if cont == 'n':
-        #print('Wynik Gracz1:', countGracz1, 'Wynik Gracz2:', countGracz2)
+    elif cont == 'n':
         break
+print('Wynik Gracz1:', countGracz1, 'Wynik Gracz2:', countGracz2)
